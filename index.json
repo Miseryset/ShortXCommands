@@ -23,6 +23,16 @@
   ],
   "rules": [
     {
+      "id": "rule-23da962d-7939-4771-8956-0cff8d6ba5d6",
+      "fileUrl": "https://raw.githubusercontent.com/ShortX-Repo/Files/main/rule/ShortX-蓝牙启停软件.txt",
+      "title": "蓝牙启停软件",
+      "description": "条件中修改\"蓝牙地址\"，动作中修改\"蓝牙名称\"和\"蓝牙地址\"",
+      "versionCode": 1,
+      "updateTimeMillis": 1689856197372,
+      "author": "Miseryset",
+      "tags": []
+    },
+    {
       "id": "rule-9b4ce64a-559e-4fd7-8c5c-f61ca7a92266",
       "fileUrl": "https://raw.githubusercontent.com/ShortX-Repo/Files/main/rule/ShortX-有道云签到.txt",
       "title": "有道云签到",
