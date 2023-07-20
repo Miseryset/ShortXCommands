@@ -117,7 +117,7 @@
   "versionCode": 1,
   "author": {
     "name": "Miseryset"
-  }
+  },
   "isEnabled": true,
   "hook": {
   },
