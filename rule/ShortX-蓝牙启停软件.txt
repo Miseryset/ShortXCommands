@@ -1,0 +1,128 @@
+{
+  "facts": [{
+    "@type": "type.googleapis.com/BTConnectedTo",
+    "device": ["*"],
+    "id": "F-c930c12f-34c3-42fa-94a0-c640d4dd9689"
+  }, {
+    "@type": "type.googleapis.com/BTDisconnectedFrom",
+    "device": ["*"],
+    "id": "F-930a0667-eb79-431e-bae8-55e21f71303e"
+  }],
+  "conditions": [{
+    "@type": "type.googleapis.com/MatchMVEL",
+    "expression": "{btDeviceAddress} \u003d\u003d \u002764:68:76:78:E1:68\u0027",
+    "id": "C-a5546cdf-cfd8-4454-91bd-1ac3af82518e"
+  }],
+  "actions": [{
+    "@type": "type.googleapis.com/IfThenElse",
+    "If": [{
+      "@type": "type.googleapis.com/MatchMVEL",
+      "expression": "{btDeviceAlias} \u003d\u003d \u0027ヾ ^_^♪我当了真~\u0027 \u0026\u0026 {btDeviceAddress} \u003d\u003d \u002764:68:76:78:E1:68\u0027",
+      "id": "C-bd07f984-e623-4b42-b61e-a9b70df699b3"
+    }, {
+      "@type": "type.googleapis.com/RequireBTConnected",
+      "device": "*",
+      "id": "C-9dc3b49d-ae78-4a55-99cd-231d557e66de"
+    }],
+    "IfActions": [{
+      "@type": "type.googleapis.com/ShowAlertDialog",
+      "positive": "Y",
+      "onPositive": [{
+        "@type": "type.googleapis.com/LaunchApp",
+        "appPkg": {
+          "pkgName": "com.edifier.edifierconnect"
+        },
+        "id": "A-232d73d0-49b4-46e9-9ffe-7b10088a280b"
+      }],
+      "title": "打开Edifier",
+      "message": "似乎连接到了常用蓝牙设备",
+      "cancelable": true,
+      "isDisabled": true,
+      "id": "A-907f2c16-2602-47b7-956b-5f519d229767"
+    }, {
+      "@type": "type.googleapis.com/ShowOverlayButton",
+      "buttonSettings": [{
+        "actions": [{
+          "@type": "type.googleapis.com/LaunchApp",
+          "appPkg": {
+            "pkgName": "com.edifier.edifierconnect"
+          },
+          "id": "A-d33848f7-2857-4b42-a4e5-54b48bcd550c"
+        }],
+        "icon": "headphone-fill",
+        "label": "启动edifier"
+      }, {
+        "actions": [{
+          "@type": "type.googleapis.com/LaunchApp",
+          "appPkg": {
+            "pkgName": "com.salt.music"
+          },
+          "id": "A-0234e9c1-dbe5-4b08-aa2c-0c54dac2e8a6"
+        }],
+        "icon": "music-2-line",
+        "label": "椒盐音乐"
+      }],
+      "autoCollapse": true,
+      "tag": "edifier",
+      "id": "A-e913978f-6ffb-4c17-86dc-e805642a2750"
+    }, {
+      "@type": "type.googleapis.com/Delay",
+      "time": "15000",
+      "id": "A-3e2617d7-e163-4f88-861d-bd9db2d77805"
+    }, {
+      "@type": "type.googleapis.com/HideOverlayButton",
+      "overlayTags": ["edifier"],
+      "id": "A-6a6011b8-5754-4b4e-9319-81e659c6d128"
+    }],
+    "ElseActions": [{
+      "@type": "type.googleapis.com/IfThenElse",
+      "If": [{
+        "@type": "type.googleapis.com/AppIsRunning",
+        "pkgs": [{
+          "pkgName": "com.edifier.edifierconnect"
+        }],
+        "id": "C-a5001fdf-637b-4d1c-8eb2-814f85ed43e6"
+      }],
+      "IfActions": [{
+        "@type": "type.googleapis.com/StopApp",
+        "appPkg": [{
+          "pkgName": "com.edifier.edifierconnect"
+        }],
+        "id": "A-3f4aff38-5f53-4018-9bfa-07a2035b52d2"
+      }, {
+        "@type": "type.googleapis.com/RemoveTasks",
+        "appPkg": [{
+          "pkgName": "com.edifier.edifierconnect"
+        }],
+        "id": "A-f1dd6d29-8fec-4075-be8c-ed27b3b1dc40"
+      }, {
+        "@type": "type.googleapis.com/ShowToast",
+        "message": "停止 Edifier",
+        "id": "A-3680eac3-89b5-46c4-9a45-e3d16c12e63e"
+      }],
+      "ElseActions": [{
+        "@type": "type.googleapis.com/ShowToast",
+        "message": "似乎没有事情可做？",
+        "id": "A-bab8b4b1-da7b-4e0b-bcc7-d2d7779c3be4"
+      }],
+      "id": "A-04529f14-768e-44ca-8997-0db65b083db4"
+    }],
+    "id": "A-82dcc7dc-8fe0-416e-b6ea-d00c8ee53d80"
+  }],
+  "id": "rule-23da962d-7939-4771-8956-0cff8d6ba5d6",
+  "lastUpdateTime": "1689856197372",
+  "createTime": "1689163099049",
+  "title": "蓝牙启停软件",
+  "description": "条件中修改\"蓝牙地址\"，动作中修改\"蓝牙名称\"和\"蓝牙地址\"",
+  "versionCode": 1,
+  "author": {
+    "name": "Miseryset"
+  }
+  "isEnabled": true,
+  "hook": {
+  },
+  "quit": {
+  }
+}
+###------###
+{"type":"rule"}
