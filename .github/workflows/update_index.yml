@@ -10,9 +10,9 @@ name: Update index
 on:
   workflow_dispatch:
   push:
-    branches: [ "main","mine" ]
+    branches: [ "mine" ]
   pull_request:
-    branches: [ "main","mine" ]
+    branches: [ "mine" ]
     types: [closed]
 
 permissions:

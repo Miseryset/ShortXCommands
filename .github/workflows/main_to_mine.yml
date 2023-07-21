@@ -1,0 +1,38 @@
+name: Merge main to mine
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  merge_to_mine:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - name: Fetch and checkout mine branch
+        run: |
+          git fetch origin mine
+          git checkout mine
+
+      - name: Merge main into mine
+        run: |
+          git merge main --no-ff --no-edit || true  # Ignore merge failure to handle conflicts
+
+      - name: Check for conflicts
+        run: |
+          if git diff --name-only --diff-filter=U; then
+            echo "Merge conflict exists. Resolving conflicts and pushing changes."
+            echo "0" > index.json   # Manually remove the conflict file
+            git add index.json       # Stage the changes after resolving conflicts
+            git commit -m "Sync_upstream"  # Commit the changes
+          fi
+          
+      - name: Push changes
+        run: |
+          git push origin dev
