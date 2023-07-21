@@ -26,6 +26,14 @@ jobs:
 
       - name: Check for conflicts
         run: |
+          sudo timedatectl set-timezone "Asia/Shanghai"
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.RSA }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+          git config --global user.email "${{ secrets.EMAILE }}"
+          git config --global user.name "Miseryset"
+          
           if git diff --name-only --diff-filter=U; then
             echo "Merge conflict exists. Resolving conflicts and pushing changes."
             echo "0" > index.json   # Manually remove the conflict file
