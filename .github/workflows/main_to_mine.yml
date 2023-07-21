@@ -16,6 +16,9 @@ jobs:
         with:
           ref: mine
       
+      - name: Fetch main branch
+        run: git fetch origin main
+        
       - name: Environment modify
         run: |
           
@@ -30,7 +33,7 @@ jobs:
       - name: Push
         run: |
           git checkout mine
-          git merge origin/main || true
+          git merge main || true
           git add .
           git commit -m "Sync_upstream"
           git remote rm origin

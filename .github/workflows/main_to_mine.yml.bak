@@ -26,14 +26,14 @@ jobs:
           ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
           git config --global user.email "${{ secrets.EMAILE }}"
           git config --global user.name "Miseryset"
-          git remote rm origin
-          git remote add origin git@github.com:Miseryset/ShortXCommands.git
-                
+          
       - name: Push
         run: |
           git checkout mine
           git merge origin/main || true
           git add .
           git commit -m "Sync_upstream"
+          git remote rm origin
+          git remote add origin git@github.com:Miseryset/ShortXCommands.git
           git push origin mine
           
