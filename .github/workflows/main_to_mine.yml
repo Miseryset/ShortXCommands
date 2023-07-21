@@ -35,6 +35,6 @@ jobs:
           git checkout mine
           git merge origin/main || true
           echo "0" > index.json
-          git merge origin/main --continue
+          git merge --continue
          
           
