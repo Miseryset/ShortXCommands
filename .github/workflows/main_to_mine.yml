@@ -31,7 +31,7 @@ jobs:
           git remote add origin git@github.com:Miseryset/ShortXCommands.git
           
           git checkout mine
-          git merge main
+          git merge main || true
           echo "0" > index.json
           git add index.json
           git commit -m "Sync_upstream"
