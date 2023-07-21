@@ -29,10 +29,8 @@ jobs:
           ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
           git config --global user.email "${{ secrets.EMAILE }}"
           git config --global user.name "Miseryset"
-          git remote rm origin
-          git remote add origin git@github.com:Miseryset/ShortXCommands.git
           
-          git checkout main -- index.json
+          git checkout origin/main -- index.json
           git add index.json
           git commit -m "fetch_index.json"
       
