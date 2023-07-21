@@ -51,6 +51,4 @@ jobs:
         body: |
             Update index
             - Updated with latest files
-        assignees: Miseryset
-        reviewers: Miseryset
         draft: false
