@@ -15,8 +15,8 @@ jobs:
         with:
           ref: mine
       
-      - name: Fetch and checkout main branch
-        run: git fetch origin main:main && git checkout main
+      - name: Fetch main branch
+        run: git fetch origin main
         
       - name: Merge main into mine
         run: |
