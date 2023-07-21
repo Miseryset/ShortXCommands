@@ -33,8 +33,6 @@ jobs:
       - name: Push
         run: |
           git checkout mine
-          git merge origin/main || true
-          echo "0" > index.json
-          git merge --continue
+          git merge origin/main --allow-unrelated-histories
          
           
