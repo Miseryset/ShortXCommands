@@ -18,7 +18,9 @@ jobs:
           
       - name: Mark path
         run: |
-          old_path="$GITHUB_WORKSPACE"
+          old_path=$GITHUB_WORKSPACE
+          echo $GITHUB_WORKSPACE
+          echo $old_path
       
       - name: Checkout mine branch
         uses: actions/checkout@v3
@@ -28,7 +30,7 @@ jobs:
       - name: Push index.json
         run: |
           rm index.json
-          cp "$old_path/index.json" "$GITHUB_WORKSPACE"
+          cp $old_path/index.json $GITHUB_WORKSPACE
           
           sudo timedatectl set-timezone "Asia/Shanghai"
           mkdir -p ~/.ssh/
