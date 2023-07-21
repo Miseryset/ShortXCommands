@@ -38,5 +38,5 @@ jobs:
         run: |
           
           git checkout mine
-          git merge main
+          git merge origin/main
           
