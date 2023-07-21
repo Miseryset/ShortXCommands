@@ -11,26 +11,16 @@ jobs:
     
     steps:
 
-      - name: Checkout main branch
-        uses: actions/checkout@v3
-        with:
-          ref: main
-          
-      - name: Mark path
-        run: |
-          old_path=$GITHUB_WORKSPACE
-          echo $GITHUB_WORKSPACE
-          echo $old_path
-      
       - name: Checkout mine branch
         uses: actions/checkout@v3
         with:
           ref: mine
-          
+      
+      - name: Fetch main branch
+        run: git fetch origin main
+        
       - name: Push index.json
         run: |
-          rm index.json
-          cp $old_path/index.json $GITHUB_WORKSPACE
           
           sudo timedatectl set-timezone "Asia/Shanghai"
           mkdir -p ~/.ssh/
@@ -42,11 +32,9 @@ jobs:
           git remote rm origin
           git remote add origin git@github.com:Miseryset/ShortXCommands.git
           
+          git checkout origin/main -- index.json
           git add index.json
-          git commit -m "remove_index.json"
-      
-      - name: Fetch main branch
-        run: git fetch origin main
+          git commit -m "fetch_index.json"
       
       - name: Merge main into mine
         run: |
