@@ -8,7 +8,7 @@ import tornaco.apps.shortx.core.rule.repo.Index
 import tornaco.apps.shortx.core.rule.repo.Item
 import java.io.File
 
-const val baseUrl = "https://raw.githubusercontent.com/ShortX-Repo/Files/main"
+const val baseUrl = "https://raw.githubusercontent.com/Miseryset/ShortXCommands/mine"
 const val daDir = "da"
 const val ruleDir = "rule"
 
