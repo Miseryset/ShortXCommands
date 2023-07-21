@@ -104,7 +104,7 @@
     },
     {
       "id": "rule-7930d5a5-8980-4a42-bd9b-3a741ef30e55",
-      "fileUrl": "https://raw.githubusercontent.com/ShortX-Repo/Files/main/rule/ShortX-MIUI自动步数.txt",
+      "fileUrl": "https://raw.githubusercontent.com/Miseryset/ShortXCommands/mine/rule/ShortX-MIUI自动步数.txt",
       "title": "MIUI自动步数",
       "description": "指定时间段内增加随机步数",
       "versionCode": 0,
