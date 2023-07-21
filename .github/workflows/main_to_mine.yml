@@ -10,25 +10,26 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+
+      - name: Checkout main branch
+        uses: actions/checkout@v3
+        with:
+          ref: main
+          
+      - name: Mark path
+        run: |
+          old_path="$GITHUB_WORKSPACE"
+      
       - name: Checkout mine branch
         uses: actions/checkout@v3
         with:
           ref: mine
-      
-      - name: rm index.json
-        run: rm index.json
-      
-      - name: Fatch index.json of main
-        uses: actions/checkout@v3
-        with:
-          path: index.json
-          ref: main
-      
-      - name: Fetch main branch
-        run: git fetch origin main
-      
-      - name: Merge main into mine
+          
+      - name: Push index.json
         run: |
+          rm index.json
+          cp "$old_path/index.json" "$GITHUB_WORKSPACE"
+          
           sudo timedatectl set-timezone "Asia/Shanghai"
           mkdir -p ~/.ssh/
           echo "${{ secrets.RSA }}" > ~/.ssh/id_rsa
@@ -38,6 +39,15 @@ jobs:
           git config --global user.name "Miseryset"
           git remote rm origin
           git remote add origin git@github.com:Miseryset/ShortXCommands.git
+          
+          git add index.json
+          git commit -m "remove_index.json"
+      
+      - name: Fetch main branch
+        run: git fetch origin main
+      
+      - name: Merge main into mine
+        run: |
           
           git checkout mine
           git merge main
