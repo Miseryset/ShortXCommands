@@ -10,9 +10,9 @@ name: Update index
 on:
   workflow_dispatch:
   push:
-    branches: [ "main" ]
+    branches: [ "main","mine" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main","mine" ]
     types: [closed]
 
 permissions:
@@ -51,6 +51,6 @@ jobs:
         body: |
             Update index
             - Updated with latest files
-        assignees: tornaco
-        reviewers: tornaco
+        assignees: Miseryset
+        reviewers: Miseryset
         draft: false
