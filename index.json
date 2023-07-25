@@ -76,9 +76,9 @@
       "id": "rule-23da962d-7939-4771-8956-0cff8d6ba5d6",
       "fileUrl": "ShortX-蓝牙启停软件.txt",
       "title": "蓝牙启停软件",
-      "description": "条件中修改\"蓝牙地址\"，动作中修改\"蓝牙名称\"和\"蓝牙地址\"",
-      "versionCode": 1,
-      "updateTimeMillis": 1689856197372,
+      "description": "修改 两项 被启用时-写入全局变量",
+      "versionCode": 0,
+      "updateTimeMillis": 1690285037652,
       "author": "Miseryset",
       "tags": []
     },
