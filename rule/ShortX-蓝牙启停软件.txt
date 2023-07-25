@@ -10,14 +10,14 @@
   }],
   "conditions": [{
     "@type": "type.googleapis.com/MatchMVEL",
-    "expression": "{btDeviceAddress} \u003d\u003d \u002764:68:76:78:E1:68\u0027",
-    "id": "C-a5546cdf-cfd8-4454-91bd-1ac3af82518e"
+    "expression": "{btDeviceAddress} \u003d\u003d globalVarOf$_01_bt_mac",
+    "id": "C-c3fe6da8-f4a3-4eb5-985a-781d9c1523d1"
   }],
   "actions": [{
     "@type": "type.googleapis.com/IfThenElse",
     "If": [{
       "@type": "type.googleapis.com/MatchMVEL",
-      "expression": "{btDeviceAlias} \u003d\u003d \u0027ヾ ^_^♪我当了真~\u0027 \u0026\u0026 {btDeviceAddress} \u003d\u003d \u002764:68:76:78:E1:68\u0027",
+      "expression": "{btDeviceAlias} \u003d\u003d globalVarOf$_01_bt_id \u0026\u0026 {btDeviceAddress} \u003d\u003d globalVarOf$_01_bt_mac",
       "id": "C-bd07f984-e623-4b42-b61e-a9b70df699b3"
     }, {
       "@type": "type.googleapis.com/RequireBTConnected",
@@ -110,16 +110,44 @@
     "id": "A-82dcc7dc-8fe0-416e-b6ea-d00c8ee53d80"
   }],
   "id": "rule-23da962d-7939-4771-8956-0cff8d6ba5d6",
-  "lastUpdateTime": "1689856197372",
+  "lastUpdateTime": "1690285037652",
   "createTime": "1689163099049",
-  "title": "蓝牙启停软件",
-  "description": "条件中修改\"蓝牙地址\"，动作中修改\"蓝牙名称\"和\"蓝牙地址\"",
-  "versionCode": 1,
   "author": {
     "name": "Miseryset"
   },
+  "title": "蓝牙启停软件",
+  "description": "修改 两项 被启用时-写入全局变量",
   "isEnabled": true,
   "hook": {
+    "actionsOnEnabled": [{
+      "@type": "type.googleapis.com/CreateGlobalVar",
+      "globalVar": {
+        "name": "_01_bt_id",
+        "type": {
+          "@type": "type.googleapis.com/StringVar"
+        }
+      },
+      "id": "A-f1ba7653-ca49-45fe-b461-43c8b5fa8398"
+    }, {
+      "@type": "type.googleapis.com/CreateGlobalVar",
+      "globalVar": {
+        "name": "_01_bt_mac",
+        "type": {
+          "@type": "type.googleapis.com/StringVar"
+        }
+      },
+      "id": "A-65088720-3ae4-448a-a990-b7bcd54cba73"
+    }, {
+      "@type": "type.googleapis.com/WriteGlobalVar",
+      "varName": "_01_bt_id",
+      "valueAsString": "ヾ ^_^♪我当了真~",
+      "id": "A-0cb736a4-9af9-4b47-9c35-e8806c201f81"
+    }, {
+      "@type": "type.googleapis.com/WriteGlobalVar",
+      "varName": "_01_bt_mac",
+      "valueAsString": "64:68:76:78:E1:68",
+      "id": "A-191c23bd-512d-409f-9fea-e0839103546e"
+    }]
   },
   "quit": {
   }
