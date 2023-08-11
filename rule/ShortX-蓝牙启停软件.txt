@@ -67,7 +67,7 @@
       "id": "A-e913978f-6ffb-4c17-86dc-e805642a2750"
     }, {
       "@type": "type.googleapis.com/Delay",
-      "time": "15000",
+      "timeString": "15000",
       "id": "A-3e2617d7-e163-4f88-861d-bd9db2d77805"
     }, {
       "@type": "type.googleapis.com/HideOverlayButton",
@@ -110,7 +110,7 @@
     "id": "A-82dcc7dc-8fe0-416e-b6ea-d00c8ee53d80"
   }],
   "id": "rule-23da962d-7939-4771-8956-0cff8d6ba5d6",
-  "lastUpdateTime": "1690285037652",
+  "lastUpdateTime": "1691756533979",
   "createTime": "1689163099049",
   "author": {
     "name": "Miseryset"
@@ -147,6 +147,15 @@
       "varName": "_01_bt_mac",
       "valueAsString": "64:68:76:78:E1:68",
       "id": "A-191c23bd-512d-409f-9fea-e0839103546e"
+    }],
+    "actionsOnDeleted": [{
+      "@type": "type.googleapis.com/DeleteGlobalVar",
+      "varName": "_01_bt_id",
+      "id": "A-4ee422d3-2eb4-4104-a4cd-52a50396e741"
+    }, {
+      "@type": "type.googleapis.com/DeleteGlobalVar",
+      "varName": "_01_bt_mac",
+      "id": "A-8234a600-c44b-4825-b1f8-1a660faefce2"
     }]
   },
   "quit": {
