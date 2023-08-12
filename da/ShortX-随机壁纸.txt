@@ -54,6 +54,7 @@
   "title": "随机壁纸",
   "description": "设置随机壁纸",
   "versionCode": "1",
+  "conflictPolicy": "ConflictStrategy_ReplaceOld"
 }
 ###------###
 {"type":"da"}
