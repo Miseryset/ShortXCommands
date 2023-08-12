@@ -46,12 +46,13 @@
     "id": "A-7e97da25-63b6-43aa-9aaa-f52672f9bc98"
   }],
   "id": "DA2f12ef6e-356d-4ebf-8f48-15a0f2ec09eb",
-  "lastUpdateTime": "1691798221242",
+  "lastUpdateTime": "1691798800872",
   "createTime": "1691760029063",
   "author": {
     "name": "Miseryset"
   },
   "title": "随机壁纸",
+  "description": "设置随机壁纸",
   "versionCode": "1",
   "conflictPolicy": "ConflictStrategy_ReplaceOld"
 }
