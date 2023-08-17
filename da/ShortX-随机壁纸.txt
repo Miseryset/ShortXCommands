@@ -34,7 +34,7 @@
     "id": "A-6e86e27d-d81b-437a-b9d9-f94bd963868c"
   }, {
     "@type": "type.googleapis.com/ShellCommand",
-    "command": "\n_path\u003d\"globalVarOf$_wallpaper_path\"\n\ncd \"$_path\"\n\nfile_count\u003d$(ls -l | grep -v \u0027^d\u0027 | wc -l)\nrandom_number\u003d$((1 + RANDOM % $file_count))\n\nrandom_filename\u003d$(ls -l | grep -v \u0027^d\u0027 | sed -n \"${random_number}p\" | awk \u0027{print $NF}\u0027)\n\necho \"$_path/$random_filename\"",
+    "command": "\n_path\u003d\"globalVarOf$_wallpaper_path\"\n\ncd \"$_path\" || echo \"路径不存在\"\n\nfile_count\u003d$(ls -l | grep -v \u0027^d\u0027 | wc -l)\nrandom_number\u003d$((1 + RANDOM % $file_count))\n\nrandom_filename\u003d$(ls -l | grep -v \u0027^d\u0027 | sed -n \"${random_number}p\" | awk \u0027{print $NF}\u0027)\n\necho \"$_path/$random_filename\"",
     "id": "A-0775eaba-2eb1-4112-b55b-b596a96625ed"
   }, {
     "@type": "type.googleapis.com/ShowToast",
@@ -46,7 +46,7 @@
     "id": "A-7e97da25-63b6-43aa-9aaa-f52672f9bc98"
   }],
   "id": "DA2f12ef6e-356d-4ebf-8f48-15a0f2ec09eb",
-  "lastUpdateTime": "1691798800872",
+  "lastUpdateTime": "1692106926231",
   "createTime": "1691760029063",
   "author": {
     "name": "Miseryset"
