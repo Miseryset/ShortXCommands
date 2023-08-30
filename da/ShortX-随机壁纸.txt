@@ -7,6 +7,8 @@
       "varName": "_wallpaper_path",
       "payload": {
       },
+      "customContextDataKey": {
+      },
       "id": "C-8416e1cf-a91a-4c42-83ca-1f37e1dcbbbf"
     }],
     "IfActions": [{
@@ -17,6 +19,8 @@
           "@type": "type.googleapis.com/StringVar"
         }
       },
+      "customContextDataKey": {
+      },
       "id": "A-b63b2525-424b-4bd6-b2a5-060a6a47c995"
     }, {
       "@type": "type.googleapis.com/ShowTextFieldDialog",
@@ -24,25 +28,48 @@
       "cancelable": true,
       "textFields": [{
       }],
+      "customContextDataKey": {
+      },
       "id": "A-17cb2e40-4126-482a-a095-056ad73f423f"
     }, {
       "@type": "type.googleapis.com/WriteGlobalVar",
       "varName": "_wallpaper_path",
       "valueAsString": "{textFieldInput1}",
+      "customContextDataKey": {
+      },
       "id": "A-b52b5355-567e-4c54-b633-658452917c7c"
     }],
+    "customContextDataKey": {
+    },
     "id": "A-6e86e27d-d81b-437a-b9d9-f94bd963868c"
   }, {
     "@type": "type.googleapis.com/ShellCommand",
-    "command": "\n_path\u003d\"globalVarOf$_wallpaper_path\"\n\ncd \"$_path\" || echo \"路径不存在\"\n\nfile_count\u003d$(ls -l | grep -v \u0027^d\u0027 | wc -l)\nrandom_number\u003d$((1 + RANDOM % $file_count))\n\nrandom_filename\u003d$(ls -l | grep -v \u0027^d\u0027 | sed -n \"${random_number}p\" | awk \u0027{print $NF}\u0027)\n\necho \"$_path/$random_filename\"",
+    "command": "\n_path\u003d\"globalVarOf$_wallpaper_path\"\n\ncd \"$_path\" || echo \"路径不存在\"\n\nfile_count\u003d$(ls -l | grep -v \u0027^d\u0027 | wc -l)\nrandom_number\u003d$((1 + RANDOM % $file_count))\n\nrandom_filename\u003d$(find . -maxdepth 1 -type f | shuf -n 1)\nrandom_filename\u003d\"${random_filename#./}\"\n\necho \"$_path/$random_filename\"",
+    "customContextDataKey": {
+      "keys": [{
+        "first": "shellOut"
+      }, {
+        "first": "shellErr"
+      }, {
+        "first": "shellCode"
+      }]
+    },
     "id": "A-0775eaba-2eb1-4112-b55b-b596a96625ed"
   }, {
     "@type": "type.googleapis.com/ShowToast",
     "message": "{shellOut}",
+    "customContextDataKey": {
+    },
     "id": "A-4e72d42a-7f5c-41d1-8716-4ed080ffc096"
+  }, {
+    "@type": "type.googleapis.com/SetWallpaper",
+    "fileUrl": "\"{shellOut}\"",
+    "customContextDataKey": {
+    },
+    "id": "A-7e97da25-63b6-43aa-9aaa-f52672f9bc98"
   }],
   "id": "DA2f12ef6e-356d-4ebf-8f48-15a0f2ec09eb",
-  "lastUpdateTime": "1692106926231",
+  "lastUpdateTime": "1693326009066",
   "createTime": "1691760029063",
   "author": {
     "name": "Miseryset"
