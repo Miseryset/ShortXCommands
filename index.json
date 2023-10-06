@@ -79,6 +79,16 @@
       "updateTimeMillis": 1689414154622,
       "author": "Genicur",
       "tags": []
+    },
+    {
+      "id": "DA48bf38f9-a27d-4ebf-a8e8-223935bdfcd1",
+      "fileUrl": "ShortX-随机壁纸_裁剪_.txt",
+      "title": "随机壁纸（裁剪）",
+      "description": "随机壁纸，裁剪至1080x2340，magick来源于https://github.com/MolotovCherry/Android-ImageMagick7",
+      "versionCode": 1,
+      "updateTimeMillis": 1696331864046,
+      "author": "Miseryset",
+      "tags": []
     }
   ],
   "rules": [
