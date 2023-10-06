@@ -1,0 +1,91 @@
+{
+  "actions": [{
+    "@type": "type.googleapis.com/IfThenElse",
+    "If": [{
+      "@type": "type.googleapis.com/EvaluateGlobalVar",
+      "op": "IsNotExists",
+      "varName": "_wallpaper_path",
+      "payload": {
+      },
+      "customContextDataKey": {
+      },
+      "id": "C-8416e1cf-a91a-4c42-83ca-1f37e1dcbbbf"
+    }],
+    "IfActions": [{
+      "@type": "type.googleapis.com/CreateGlobalVar",
+      "globalVar": {
+        "name": "_wallpaper_path",
+        "type": {
+          "@type": "type.googleapis.com/StringVar"
+        }
+      },
+      "customContextDataKey": {
+      },
+      "id": "A-b63b2525-424b-4bd6-b2a5-060a6a47c995"
+    }, {
+      "@type": "type.googleapis.com/ShowTextFieldDialog",
+      "title": "壁纸路径",
+      "cancelable": true,
+      "textFields": [{
+      }],
+      "customContextDataKey": {
+      },
+      "id": "A-17cb2e40-4126-482a-a095-056ad73f423f"
+    }, {
+      "@type": "type.googleapis.com/WriteGlobalVar",
+      "varName": "_wallpaper_path",
+      "valueAsString": "{textFieldInput1}",
+      "customContextDataKey": {
+      },
+      "id": "A-b52b5355-567e-4c54-b633-658452917c7c"
+    }],
+    "customContextDataKey": {
+    },
+    "id": "A-1ec623dd-aa37-477f-9057-7b283a4ef298"
+  }, {
+    "@type": "type.googleapis.com/ShellCommand",
+    "command": "#_path\u003d\"globalVarOf$_wallpaper_path\"\nwall_p\u003d\"/sdcard/Android/wallpaper\"\n[ ! -d \"${wall_p}\" ] \u0026\u0026 mkdir -p \"${wall_p}\"\nfile_path\u003d\"${wall_p}/random_path.txt\"\n#echo \"${_path}\" \u003e \"${file_path}\"\n_path\u003d$(grep -v \u0027^$\u0027 \"$file_path\" | shuf -n 1)\ncd \"$_path\"\nrandom_filename\u003d$(find . -type f \\( -name \"*.jpg\" -o -name \"*.JPG\" -o -name \"*.png\" -o -name \"*.PNG\" \\) | shuf -n 1)\nrandom_filename\u003d\"${random_filename#./}\"\necho \"$_path/$random_filename\"\nmagick \"${random_filename}\" -resize x2340 \"${wall_p}/wallpaper.jpg\"\nwallpaper_width\u003d$(magick identify -format \"%w\" \"${wall_p}/wallpaper.jpg\")\nif [ \"${wallpaper_width}\" -ge 1080 ] \u0026\u0026 [ \"${wallpaper_width}\" -le 1950 ]; then\n  magick \"${wall_p}/wallpaper.jpg\" -gravity center -crop 1080x2340+0+0 +repage \"${wall_p}/wallpaper1.jpg\"\nelse\n  magick \"${wall_p}/wallpaper.jpg\" -blur 0x4 \"${wall_p}/wallpaper_blur.jpg\"\n  magick \"${random_filename}\" -resize 1080x \"${wall_p}/wallpaper2.jpg\"\n  magick convert \"${wall_p}/wallpaper_blur.jpg\" \"${wall_p}/wallpaper2.jpg\" -gravity center -composite \"${wall_p}/wallpaper1.jpg\"\n  magick convert \"${wall_p}/wallpaper1.jpg\" -gravity center -crop 1080x2340+0+0 +repage \"${wall_p}/wallpaper1.jpg\"\nfi",
+    "customContextDataKey": {
+      "keys": [{
+        "first": "shellOut"
+      }, {
+        "first": "shellErr"
+      }, {
+        "first": "shellCode"
+      }]
+    },
+    "id": "A-43132e6a-e3ad-4161-8022-3750e01911ad"
+  }, {
+    "@type": "type.googleapis.com/ShowDanmu",
+    "text": "{shellOut}",
+    "customContextDataKey": {
+    },
+    "isDisabled": true,
+    "id": "A-7a980ba9-1041-455e-9177-c0216dbff0cc"
+  }, {
+    "@type": "type.googleapis.com/ShowToast",
+    "message": "{shellOut}",
+    "customContextDataKey": {
+    },
+    "isDisabled": true,
+    "id": "A-8cd3ad6e-bf3d-4968-9eca-0206aef0969d"
+  }, {
+    "@type": "type.googleapis.com/SetWallpaper",
+    "fileUrl": "/sdcard/Android/wallpaper/wallpaper1.jpg",
+    "customContextDataKey": {
+    },
+    "id": "A-c8e9375c-63c8-48ab-975b-82f26bec9669"
+  }],
+  "id": "DA48bf38f9-a27d-4ebf-a8e8-223935bdfcd1",
+  "lastUpdateTime": "1696331864046",
+  "createTime": "1691760029063",
+  "author": {
+    "name": "Miseryset"
+  },
+  "title": "随机壁纸（裁剪）",
+  "description": "随机壁纸，裁剪至1080x2340，magick来源于https://github.com/MolotovCherry/Android-ImageMagick7",
+  "versionCode": "1",
+  "conflictPolicy": "ConflictStrategy_ReplaceOld"
+}
+###------###
+{"type":"da"}
