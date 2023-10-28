@@ -11,23 +11,13 @@
       "tags": []
     },
     {
-      "id": "DA85a8f0c9-4eb9-47cb-b070-61f830ca967c",
-      "fileUrl": "ShortX-简易密码生成器0.2_改进_.txt",
-      "title": "简易密码生成器0.2(改进)",
-      "description": "一个简易字符串生成方法 需要改进的地方还有很多",
+      "id": "DA9122b14f-a902-48f5-8dcb-f2b98881519d",
+      "fileUrl": "ShortX-IP查询.txt",
+      "title": "IP查询",
+      "description": "查询归属地并用弹幕通知",
       "versionCode": 0,
-      "updateTimeMillis": 1689729628120,
-      "author": "鸿鹄",
-      "tags": []
-    },
-    {
-      "id": "DA6d0ad33b-c15f-4b4d-915f-a457e9b35408",
-      "fileUrl": "ShortX-B站IP地址检查.txt",
-      "title": "B站IP地址检查",
-      "description": "看看b站认为你在哪",
-      "versionCode": 1,
-      "updateTimeMillis": 1689900326826,
-      "author": "淫乱",
+      "updateTimeMillis": 1689414154622,
+      "author": "Genicur",
       "tags": []
     },
     {
@@ -37,6 +27,16 @@
       "description": "（单次下载用这个）获取bing每日壁纸到本地（中国大陆）",
       "versionCode": 3,
       "updateTimeMillis": 1689910693151,
+      "author": "淫乱",
+      "tags": []
+    },
+    {
+      "id": "DA6d0ad33b-c15f-4b4d-915f-a457e9b35408",
+      "fileUrl": "ShortX-B站IP地址检查.txt",
+      "title": "B站IP地址检查",
+      "description": "看看b站认为你在哪",
+      "versionCode": 1,
+      "updateTimeMillis": 1689900326826,
       "author": "淫乱",
       "tags": []
     },
@@ -51,6 +51,16 @@
       "tags": []
     },
     {
+      "id": "DA85a8f0c9-4eb9-47cb-b070-61f830ca967c",
+      "fileUrl": "ShortX-简易密码生成器0.2_改进_.txt",
+      "title": "简易密码生成器0.2(改进)",
+      "description": "一个简易字符串生成方法 需要改进的地方还有很多",
+      "versionCode": 0,
+      "updateTimeMillis": 1689729628120,
+      "author": "鸿鹄",
+      "tags": []
+    },
+    {
       "id": "DAfc48c802-8738-4858-b6d2-70ba70f2f2a0",
       "fileUrl": "ShortX-Bing壁纸全自动保存.txt",
       "title": "Bing壁纸全自动保存",
@@ -59,29 +69,9 @@
       "updateTimeMillis": 1689907469283,
       "author": "淫乱",
       "tags": []
-    },
-    {
-      "id": "DA9122b14f-a902-48f5-8dcb-f2b98881519d",
-      "fileUrl": "ShortX-IP查询.txt",
-      "title": "IP查询",
-      "description": "查询归属地并用弹幕通知",
-      "versionCode": 0,
-      "updateTimeMillis": 1689414154622,
-      "author": "Genicur",
-      "tags": []
     }
   ],
   "rules": [
-    {
-      "id": "rule-ecb3726f-17e2-479e-b0a7-405eb3a5a064",
-      "fileUrl": "ShortX-自动爱你_微信版_.txt",
-      "title": "自动爱你(微信版)",
-      "description": "",
-      "versionCode": 0,
-      "updateTimeMillis": 1689904256881,
-      "author": "JK L",
-      "tags": []
-    },
     {
       "id": "rule-33dc6137-264f-448f-8a40-824c03030b31",
       "fileUrl": "ShortX-电量-温度-功率记录.txt",
@@ -93,102 +83,12 @@
       "tags": []
     },
     {
-      "id": "rule-171fa653-24a4-4b52-8614-448a1bea21f9",
-      "fileUrl": "ShortX-出站关闭NFC.txt",
-      "title": "出站关闭NFC",
-      "description": "",
-      "versionCode": 0,
-      "updateTimeMillis": 1689007971283,
-      "author": "NinjiomPMBot",
-      "tags": []
-    },
-    {
-      "id": "rule-d3f32eb0-71ae-4c9a-a143-83757e516545",
-      "fileUrl": "ShortX-微信支付自动输密码.txt",
-      "title": "微信支付自动输密码",
-      "description": "为root了用不了指纹支付且不装指纹模块的用户提供输密码服务",
-      "versionCode": 1,
-      "updateTimeMillis": 1694623367218,
-      "author": "JK L",
-      "tags": []
-    },
-    {
-      "id": "rule-53c01d0f-c4d6-4ac8-8fc0-35518ba2cf64",
-      "fileUrl": "ShortX-_调试_应用趋势通知.txt",
-      "title": "[调试]应用趋势通知 1.6",
-      "description": "当应用停止运行时发送一条通知",
-      "versionCode": 6,
-      "updateTimeMillis": 1696850479780,
-      "author": "Rarlya",
-      "tags": []
-    },
-    {
-      "id": "lingshang-powerpanel",
-      "fileUrl": "ShortX-电源面板.txt",
-      "title": "电源面板",
-      "description": "长按电源键提供更多选项",
-      "versionCode": 3,
-      "updateTimeMillis": 1690901484549,
-      "author": "泠裳",
-      "tags": []
-    },
-    {
       "id": "rule-066c2825-24f7-48e2-b7cd-baa5695bf672",
       "fileUrl": "ShortX-米游社签到1.8.txt",
       "title": "米游社签到1.8",
       "description": "自动完成:米游社任务，原神，星铁，云原神等签到",
       "versionCode": 1,
       "updateTimeMillis": 1695909278667,
-      "author": "ShortX",
-      "tags": []
-    },
-    {
-      "id": "rule-9b4ce64a-559e-4fd7-8c5c-f61ca7a92266",
-      "fileUrl": "ShortX-有道云签到.txt",
-      "title": "有道云签到",
-      "description": "",
-      "versionCode": 0,
-      "updateTimeMillis": 1689671870458,
-      "author": "tiyu",
-      "tags": []
-    },
-    {
-      "id": "rule-8f1a5a71-6a0a-4371-8259-22fe2da7b369",
-      "fileUrl": "ShortX-恋爱辅助.txt",
-      "title": "恋爱辅助",
-      "description": "智能推荐回复",
-      "versionCode": 1,
-      "updateTimeMillis": 1690092385318,
-      "author": "JK L",
-      "tags": []
-    },
-    {
-      "id": "rule-80b31faa-77d2-4d40-b6f8-a1e40fe6193a",
-      "fileUrl": "ShortX-自动旋转.txt",
-      "title": "自动旋转",
-      "description": "指定应用获得音频焦点自动开启屏幕旋转",
-      "versionCode": 0,
-      "updateTimeMillis": 1689652572555,
-      "author": "Hidarihitomi",
-      "tags": []
-    },
-    {
-      "id": "rule-7930d5a5-8980-4a42-bd9b-3a741ef30e55",
-      "fileUrl": "ShortX-MIUI自动步数.txt",
-      "title": "MIUI自动步数",
-      "description": "指定时间段内增加随机步数",
-      "versionCode": 0,
-      "updateTimeMillis": 1689926670688,
-      "author": "Hidarihitomi",
-      "tags": []
-    },
-    {
-      "id": "rule-9e40dd65-a271-4fb8-8153-ab4bbebbb893",
-      "fileUrl": "ShortX-验证码提取.txt",
-      "title": "验证码提取",
-      "description": "提取短信中的验证码，自动填入输入框",
-      "versionCode": 0,
-      "updateTimeMillis": 1689907916958,
       "author": "ShortX",
       "tags": []
     },
@@ -203,6 +103,86 @@
       "tags": []
     },
     {
+      "id": "lingshang-powerpanel",
+      "fileUrl": "ShortX-电源面板.txt",
+      "title": "电源面板",
+      "description": "长按电源键提供更多选项",
+      "versionCode": 3,
+      "updateTimeMillis": 1690901484549,
+      "author": "泠裳",
+      "tags": []
+    },
+    {
+      "id": "rule-ecb3726f-17e2-479e-b0a7-405eb3a5a064",
+      "fileUrl": "ShortX-自动爱你_微信版_.txt",
+      "title": "自动爱你(微信版)",
+      "description": "",
+      "versionCode": 0,
+      "updateTimeMillis": 1689904256881,
+      "author": "JK L",
+      "tags": []
+    },
+    {
+      "id": "rule-53c01d0f-c4d6-4ac8-8fc0-35518ba2cf64",
+      "fileUrl": "ShortX-_调试_应用趋势通知.txt",
+      "title": "[调试]应用趋势通知 1.6",
+      "description": "当应用停止运行时发送一条通知",
+      "versionCode": 6,
+      "updateTimeMillis": 1696850479780,
+      "author": "Rarlya",
+      "tags": []
+    },
+    {
+      "id": "rule-9e40dd65-a271-4fb8-8153-ab4bbebbb893",
+      "fileUrl": "ShortX-验证码提取.txt",
+      "title": "验证码提取",
+      "description": "提取短信中的验证码，自动填入输入框",
+      "versionCode": 0,
+      "updateTimeMillis": 1689907916958,
+      "author": "ShortX",
+      "tags": []
+    },
+    {
+      "id": "rule-9b4ce64a-559e-4fd7-8c5c-f61ca7a92266",
+      "fileUrl": "ShortX-有道云签到.txt",
+      "title": "有道云签到",
+      "description": "",
+      "versionCode": 0,
+      "updateTimeMillis": 1689671870458,
+      "author": "tiyu",
+      "tags": []
+    },
+    {
+      "id": "rule-d3f32eb0-71ae-4c9a-a143-83757e516545",
+      "fileUrl": "ShortX-微信支付自动输密码.txt",
+      "title": "微信支付自动输密码",
+      "description": "为root了用不了指纹支付且不装指纹模块的用户提供输密码服务",
+      "versionCode": 1,
+      "updateTimeMillis": 1694623367218,
+      "author": "JK L",
+      "tags": []
+    },
+    {
+      "id": "rule-8f1a5a71-6a0a-4371-8259-22fe2da7b369",
+      "fileUrl": "ShortX-恋爱辅助.txt",
+      "title": "恋爱辅助",
+      "description": "智能推荐回复",
+      "versionCode": 1,
+      "updateTimeMillis": 1690092385318,
+      "author": "JK L",
+      "tags": []
+    },
+    {
+      "id": "rule-7930d5a5-8980-4a42-bd9b-3a741ef30e55",
+      "fileUrl": "ShortX-MIUI自动步数.txt",
+      "title": "MIUI自动步数",
+      "description": "指定时间段内增加随机步数",
+      "versionCode": 0,
+      "updateTimeMillis": 1689926670688,
+      "author": "Hidarihitomi",
+      "tags": []
+    },
+    {
       "id": "rule-8fba3995-e662-4f5b-86a3-ac31f60e4ab6",
       "fileUrl": "ShortX-聊天工具.txt",
       "title": "聊天工具",
@@ -210,6 +190,26 @@
       "versionCode": 1,
       "updateTimeMillis": 1696671000566,
       "author": "Sydney2580",
+      "tags": []
+    },
+    {
+      "id": "rule-171fa653-24a4-4b52-8614-448a1bea21f9",
+      "fileUrl": "ShortX-出站关闭NFC.txt",
+      "title": "出站关闭NFC",
+      "description": "",
+      "versionCode": 0,
+      "updateTimeMillis": 1689007971283,
+      "author": "NinjiomPMBot",
+      "tags": []
+    },
+    {
+      "id": "rule-80b31faa-77d2-4d40-b6f8-a1e40fe6193a",
+      "fileUrl": "ShortX-自动旋转.txt",
+      "title": "自动旋转",
+      "description": "指定应用获得音频焦点自动开启屏幕旋转",
+      "versionCode": 0,
+      "updateTimeMillis": 1689652572555,
+      "author": "Hidarihitomi",
       "tags": []
     }
   ],
