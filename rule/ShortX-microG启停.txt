@@ -1,0 +1,81 @@
+{
+  "facts": [{
+    "@type": "type.googleapis.com/AppProcessStarted",
+    "processName": [{
+      "processName": "app.rvx.android.youtube"
+    }],
+    "customContextDataKey": {
+    },
+    "id": "F-77124bb0-daaa-4551-afaa-2354ae65b510"
+  }, {
+    "@type": "type.googleapis.com/PkgStopRunning",
+    "apps": [{
+      "pkgName": "app.rvx.android.youtube"
+    }],
+    "customContextDataKey": {
+    },
+    "id": "F-647fd88a-c93f-4950-bd60-79a9133f2704"
+  }],
+  "actions": [{
+    "@type": "type.googleapis.com/IfThenElse",
+    "If": [{
+      "@type": "type.googleapis.com/AppHasTask",
+      "pkgs": [{
+        "pkgName": "app.rvx.android.youtube"
+      }],
+      "op": "ANY",
+      "customContextDataKey": {
+      },
+      "id": "C-3eb1391b-309a-41e4-8a1a-04d5dc7da0b6"
+    }],
+    "IfActions": [{
+      "@type": "type.googleapis.com/StartAppProcess",
+      "appPkg": [{
+        "pkgName": "com.mgoogle.android.gms"
+      }],
+      "customContextDataKey": {
+      },
+      "id": "A-42e0b6f4-c18d-4871-a802-a3e607f6d99b"
+    }, {
+      "@type": "type.googleapis.com/ShowToast",
+      "message": "run microG",
+      "customContextDataKey": {
+      },
+      "id": "A-53ef4046-ef21-415d-a262-c166577befaa"
+    }],
+    "ElseActions": [{
+      "@type": "type.googleapis.com/ShowToast",
+      "message": "kill microG",
+      "customContextDataKey": {
+      },
+      "id": "A-ed4bd94b-f31b-40f0-8cb8-3eb1a34e925c"
+    }, {
+      "@type": "type.googleapis.com/StopApp",
+      "appPkg": [{
+        "pkgName": "com.mgoogle.android.gms"
+      }],
+      "customContextDataKey": {
+      },
+      "id": "A-7ced4395-7a90-4e28-b8c0-e1856bdda497"
+    }],
+    "customContextDataKey": {
+    },
+    "id": "A-6353bd35-bb80-4fa1-bde5-df151857288d"
+  }],
+  "id": "rule-cc95e7a3-c4ba-4f55-b878-1d0dac9f56aa",
+  "lastUpdateTime": "1704093924756",
+  "createTime": "1704093390680",
+  "author": {
+    "name": "Miseryset"
+  },
+  "title": "microG启停",
+  "isEnabled": true,
+  "hook": {
+  },
+  "quit": {
+  },
+  "versionCode": "1",
+  "conflictPolicy": "ConflictStrategy_ReplaceOld"
+}
+###------###
+{"type":"rule"}
