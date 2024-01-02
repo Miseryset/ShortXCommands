@@ -1,5 +1,11 @@
 {
   "actions": [{
+    "@type": "type.googleapis.com/ShowToast",
+    "message": "随机壁纸",
+    "customContextDataKey": {
+    },
+    "id": "A-140c769a-5bfe-49b5-be29-26ca2a40a64c"
+  }, {
     "@type": "type.googleapis.com/ShellCommand",
     "command": "wall_p\u003d\"/sdcard/Android/wallpaper\"\n[ ! -d \"${wall_p}\" ] \u0026\u0026 mkdir -p \"${wall_p}\"\nfile_path\u003d\"${wall_p}/random_path.txt\"\n[ ! -f \"${file_path}\" ] \u0026\u0026 echo \"#填写壁纸路径，一行一个\" \u003e \"${file_path}\"\n_path\u003d$(grep -vE \u0027^\\s*$|^\\s*#|^\\s+\u0027 \"${file_path}\" | shuf -n 1)\ncd \"$_path\"\nrandom_filename\u003d$(find . -type f \\( -name \"*.jpg\" -o -name \"*.JPG\" -o -name \"*.png\" -o -name \"*.PNG\" \\) | shuf -n 1)\nrandom_filename\u003d\"${random_filename#./}\"\n#echo \"$_path/$random_filename\"\nscreen_w\u003d$(wm size | sed \u0027s/.*: \\([0-9]\\{4\\}\\)x.*/\\1/\u0027)\nscreen_h\u003d$(wm size | sed \u0027s/.*x\\([0-9]\\{4\\}\\).*/\\1/\u0027)\nscreen_hw\u003d$(echo \"${screen_w} * 1.8\" | bc -q)\nscreen_hw\u003d$(echo ${screen_hw%.*})\nmagick \"${random_filename}\" -resize \"x${screen_h}\" \"${wall_p}/wallpaper0.jpg\"\nwallpaper_width\u003d$(magick identify -format \"%w\" \"${wall_p}/wallpaper0.jpg\")\nif [ \"${wallpaper_width}\" -ge \"${screen_w}\" ] \u0026\u0026 [ \"${wallpaper_width}\" -le \"${screen_hw}\" ]; then\n  magick \"${wall_p}/wallpaper0.jpg\" -gravity center -crop \"${screen_w}x${screen_h}+0+0\" +repage \"${wall_p}/wallpaper.jpg\"\nelse\n  magick \"${wall_p}/wallpaper0.jpg\" -blur 0x5 \"${wall_p}/wallpaper_blur.jpg\"\n  magick \"${random_filename}\" -resize \"${screen_w}x\" \"${wall_p}/wallpaper1.jpg\"\n  magick convert \"${wall_p}/wallpaper_blur.jpg\" \"${wall_p}/wallpaper1.jpg\" -gravity center -composite \"${wall_p}/wallpaper2.jpg\"\n  magick convert \"${wall_p}/wallpaper2.jpg\" -gravity center -crop \"${screen_w}x${screen_h}+0+0\" +repage \"${wall_p}/wallpaper.jpg\"\nfi",
     "customContextDataKey": {
@@ -35,7 +41,7 @@
     "id": "A-c8e9375c-63c8-48ab-975b-82f26bec9669"
   }],
   "id": "DA48bf38f9-a27d-4ebf-a8e8-223935bdfcd1",
-  "lastUpdateTime": "1704106733941",
+  "lastUpdateTime": "1704123466923",
   "createTime": "1691760029063",
   "author": {
     "name": "Miseryset"

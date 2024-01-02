@@ -1,0 +1,31 @@
+{
+  "facts": [{
+    "@type": "type.googleapis.com/OnQSTileClick",
+    "tileNumber": 1,
+    "customContextDataKey": {
+    },
+    "id": "F-b69fb4a6-af9b-4c1a-84b5-f7471ddded02"
+  }],
+  "actions": [{
+    "@type": "type.googleapis.com/ShellCommand",
+    "command": "am start -a android.intent.action.VIEW -d http://127.0.0.1:9999/ui/#/proxies",
+    "customContextDataKey": {
+    },
+    "id": "A-b5b1f22f-4156-4224-b97d-5d343d97aa08"
+  }],
+  "id": "rule-affbc4a0-f14d-4bc8-a103-32ec674ffedb",
+  "lastUpdateTime": "1704196650502",
+  "createTime": "1704196496809",
+  "author": {
+    "name": "Miseryset"
+  },
+  "title": "clash面板",
+  "isEnabled": true,
+  "hook": {
+  },
+  "quit": {
+  },
+  "versionCode": "1"
+}
+###------###
+{"type":"rule"}

@@ -1,0 +1,55 @@
+{
+  "facts": [{
+    "@type": "type.googleapis.com/Alarm",
+    "triggerAt": {
+      "hour": 1,
+      "minutes": 30
+    },
+    "repeat": {
+      "days": ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+    },
+    "customContextDataKey": {
+    },
+    "id": "F-0e8f24be-67ad-4634-9188-51bff048c160"
+  }],
+  "actions": [{
+    "@type": "type.googleapis.com/IfThenElse",
+    "If": [{
+      "@type": "type.googleapis.com/AppIsRunning",
+      "pkgs": [{
+        "pkgName": "app.rvx.android.youtube"
+      }],
+      "op": "ANY",
+      "customContextDataKey": {
+      },
+      "id": "C-6efb2c3f-aa25-40fd-ad9e-5cf4759d9a5c"
+    }],
+    "IfActions": [{
+      "@type": "type.googleapis.com/StopApp",
+      "appPkg": [{
+        "pkgName": "app.rvx.android.youtube"
+      }],
+      "customContextDataKey": {
+      },
+      "id": "A-fb8851a3-f42e-44ae-aa3c-f3dcd7719589"
+    }],
+    "customContextDataKey": {
+    },
+    "id": "A-a0dc9f55-91d6-4726-a014-8179deb096a2"
+  }],
+  "id": "rule-246cc63b-481d-42fe-be40-666260febb7a",
+  "lastUpdateTime": "1704194456585",
+  "createTime": "1704126421108",
+  "author": {
+    "name": "Miseryset"
+  },
+  "title": "定时停止youtube",
+  "isEnabled": true,
+  "hook": {
+  },
+  "quit": {
+  },
+  "versionCode": "1"
+}
+###------###
+{"type":"rule"}
