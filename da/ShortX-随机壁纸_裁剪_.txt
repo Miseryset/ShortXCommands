@@ -1,13 +1,88 @@
 {
   "actions": [{
+    "@type": "type.googleapis.com/NoAction",
+    "icon": "image-2-line",
+    "customContextDataKey": {
+    },
+    "id": "A-19e84b34-4470-4715-a735-fbbeca941562"
+  }, {
     "@type": "type.googleapis.com/ShowToast",
     "message": "随机壁纸",
     "customContextDataKey": {
     },
     "id": "A-140c769a-5bfe-49b5-be29-26ca2a40a64c"
   }, {
+    "@type": "type.googleapis.com/IfThenElse",
+    "If": [{
+      "@type": "type.googleapis.com/RequireTileState",
+      "state": "QSTileState_Active",
+      "tileSpec": "custom(tornaco.apps.shortx/.ui.service.tile.Tile3)",
+      "customContextDataKey": {
+      },
+      "id": "C-ddb78fa9-9ef0-4123-8e83-7296ee4d3894"
+    }],
+    "IfActions": [{
+      "@type": "type.googleapis.com/ShowToast",
+      "message": "锁定壁纸路径",
+      "customContextDataKey": {
+      },
+      "id": "A-373bde66-8d8a-4e1a-986a-08f5170413e8"
+    }, {
+      "@type": "type.googleapis.com/ShellCommand",
+      "command": "wall_p\u003d\"/sdcard/Android/wallpaper\"\n[ ! -d \"${wall_p}\" ] \u0026\u0026 mkdir -p \"${wall_p}\"\n_path\u003d$(grep \"^/\" \"${wall_p}/lock_path.txt\")\ncd \"$_path\"\nimage_count\u003d$(find . -maxdepth 3 -type f \\( -iname \\*.jpg -o -iname \\*.png \\) | wc -l)\nrand_num\u003d$((RANDOM % image_count + 1))\nrandom_filename\u003d$(find . -maxdepth 3 -type f \\( -iname \\*.jpg -o -iname \\*.png \\) | shuf | sed -n ${rand_num}p)\n# random_filename\u003d$(find . -type f \\( -name \"*.jpg\" -o -name \"*.JPG\" -o -name \"*.png\" -o -name \"*.PNG\" \\) | shuf -n 1)\nrandom_filename\u003d\"${random_filename#./}\"\n#echo \"$_path/$random_filename\"\nscreen_w\u003d$(wm size | sed \u0027s/.*: \\([0-9]\\{4\\}\\)x.*/\\1/\u0027)\nscreen_h\u003d$(wm size | sed \u0027s/.*x\\([0-9]\\{4\\}\\).*/\\1/\u0027)\nscreen_hw\u003d$(echo \"${screen_w} * 1.8\" | bc -q)\nscreen_hw\u003d$(echo ${screen_hw%.*})\nmagick \"${random_filename}\" -resize \"x${screen_h}\" \"${wall_p}/wallpaper0.jpg\"\nwallpaper_width\u003d$(magick identify -format \"%w\" \"${wall_p}/wallpaper0.jpg\")\nif [ \"${wallpaper_width}\" -ge \"${screen_w}\" ] \u0026\u0026 [ \"${wallpaper_width}\" -le \"${screen_hw}\" ]; then\n  magick \"${wall_p}/wallpaper0.jpg\" -gravity center -crop \"${screen_w}x${screen_h}+0+0\" +repage \"${wall_p}/wallpaper.jpg\"\nelse\n  magick \"${wall_p}/wallpaper0.jpg\" -blur 0x10 \"${wall_p}/wallpaper_blur.jpg\"\n  magick \"${random_filename}\" -resize \"${screen_w}x\" \"${wall_p}/wallpaper1.jpg\"\n  magick convert -append \"${wall_p}/wallpaper1.jpg\" \"${wall_p}/wallpaper1.jpg\" \"${wall_p}/wallpaper1.jpg\" \"${wall_p}/wallpaper1.jpg\"\n  magick convert \"${wall_p}/wallpaper_blur.jpg\" \"${wall_p}/wallpaper1.jpg\" -gravity center -composite \"${wall_p}/wallpaper2.jpg\"\n  magick convert \"${wall_p}/wallpaper2.jpg\" -gravity center -crop \"${screen_w}x${screen_h}+0+0\" +repage \"${wall_p}/wallpaper.jpg\"\nfi",
+      "customContextDataKey": {
+        "keys": [{
+          "first": "shellOut"
+        }, {
+          "first": "shellErr"
+        }, {
+          "first": "shellCode"
+        }]
+      },
+      "actionOnError": "Break",
+      "id": "A-43132e6a-e3ad-4161-8022-3750e01911ad"
+    }],
+    "ElseActions": [{
+      "@type": "type.googleapis.com/ShellCommand",
+      "command": "wall_p\u003d\"/sdcard/Android/wallpaper\"\n[ ! -d \"${wall_p}\" ] \u0026\u0026 mkdir -p \"${wall_p}\"\nfile_path\u003d\"${wall_p}/random_path.txt\"\n[ ! -f \"${file_path}\" ] \u0026\u0026 echo \"#填写壁纸路径，一行一个\" \u003e \"${file_path}\"\n\nline_count\u003d$(grep -c \"^/\" \"${file_path}\")\nif [ $line_count -gt 0 ]; then\n  random_num\u003d$((RANDOM % line_count + 1))\n  _path\u003d$(grep \"^/\" \"${file_path}\" | shuf | sed -n \"${random_num}p\")\nelse\n  exit 123\nfi\n# _path\u003d$(grep -vE \u0027^\\s*$|^\\s*#|^\\s+\u0027 \"${file_path}\" | shuf -n 1)\necho \"$_path\" \u003e\"${wall_p}/lock_path.txt\"\ncd \"$_path\"\nimage_count\u003d$(find . -maxdepth 3 -type f \\( -iname \\*.jpg -o -iname \\*.png \\) | wc -l)\nrand_num\u003d$((RANDOM % image_count + 1))\nrandom_filename\u003d$(find . -maxdepth 3 -type f \\( -iname \\*.jpg -o -iname \\*.png \\) | shuf | sed -n ${rand_num}p)\n# random_filename\u003d$(find . -type f \\( -name \"*.jpg\" -o -name \"*.JPG\" -o -name \"*.png\" -o -name \"*.PNG\" \\) | shuf -n 1)\nrandom_filename\u003d\"${random_filename#./}\"\n#echo \"$_path/$random_filename\"\nscreen_w\u003d$(wm size | sed \u0027s/.*: \\([0-9]\\{4\\}\\)x.*/\\1/\u0027)\nscreen_h\u003d$(wm size | sed \u0027s/.*x\\([0-9]\\{4\\}\\).*/\\1/\u0027)\nscreen_hw\u003d$(echo \"${screen_w} * 1.8\" | bc -q)\nscreen_hw\u003d$(echo ${screen_hw%.*})\nmagick \"${random_filename}\" -resize \"x${screen_h}\" \"${wall_p}/wallpaper0.jpg\"\nwallpaper_width\u003d$(magick identify -format \"%w\" \"${wall_p}/wallpaper0.jpg\")\nif [ \"${wallpaper_width}\" -ge \"${screen_w}\" ] \u0026\u0026 [ \"${wallpaper_width}\" -le \"${screen_hw}\" ]; then\n  magick \"${wall_p}/wallpaper0.jpg\" -gravity center -crop \"${screen_w}x${screen_h}+0+0\" +repage \"${wall_p}/wallpaper.jpg\"\nelse\n  magick \"${wall_p}/wallpaper0.jpg\" -blur 0x10 \"${wall_p}/wallpaper_blur.jpg\"\n  magick \"${random_filename}\" -resize \"${screen_w}x\" \"${wall_p}/wallpaper1.jpg\"\n  magick convert -append \"${wall_p}/wallpaper1.jpg\" \"${wall_p}/wallpaper1.jpg\" \"${wall_p}/wallpaper1.jpg\" \"${wall_p}/wallpaper1.jpg\"\n  magick convert \"${wall_p}/wallpaper_blur.jpg\" \"${wall_p}/wallpaper1.jpg\" -gravity center -composite \"${wall_p}/wallpaper2.jpg\"\n  magick convert \"${wall_p}/wallpaper2.jpg\" -gravity center -crop \"${screen_w}x${screen_h}+0+0\" +repage \"${wall_p}/wallpaper.jpg\"\nfi",
+      "customContextDataKey": {
+        "keys": [{
+          "first": "shellOut"
+        }, {
+          "first": "shellErr"
+        }, {
+          "first": "shellCode"
+        }]
+      },
+      "actionOnError": "Break",
+      "id": "A-43132e6a-e3ad-4161-8022-3750e01911ad"
+    }],
+    "customContextDataKey": {
+    },
+    "id": "A-4e09b712-fd44-4b50-a740-070c083a490a"
+  }, {
+    "@type": "type.googleapis.com/IfThenElse",
+    "If": [{
+      "@type": "type.googleapis.com/RequireTileState",
+      "state": "QSTileState_Active",
+      "tileSpec": "custom(tornaco.apps.shortx/.ui.service.tile.Tile7)",
+      "customContextDataKey": {
+      },
+      "id": "C-e481b277-491e-42aa-965e-8c3faa99f279"
+    }],
+    "IfActions": [{
+      "@type": "type.googleapis.com/ShellCommand",
+      "command": "if [ -e \"/storage/emulated/0/Android/wallpaper/wallpaper.jpg\" ]; then\n  magick \"/storage/emulated/0/Android/wallpaper/wallpaper.jpg\" -blur 0x8 \"/storage/emulated/0/Android/wallpaper/wallpaper_blur.jpg\"\nfi",
+      "customContextDataKey": {
+      },
+      "id": "A-78a03993-c8c2-467a-8005-466406f667a4"
+    }],
+    "customContextDataKey": {
+    },
+    "id": "A-9749a8cd-72fc-47e5-b570-c99eaf577728"
+  }, {
     "@type": "type.googleapis.com/ShellCommand",
-    "command": "wall_p\u003d\"/sdcard/Android/wallpaper\"\n[ ! -d \"${wall_p}\" ] \u0026\u0026 mkdir -p \"${wall_p}\"\nfile_path\u003d\"${wall_p}/random_path.txt\"\n[ ! -f \"${file_path}\" ] \u0026\u0026 echo \"#填写壁纸路径，一行一个\" \u003e \"${file_path}\"\n_path\u003d$(grep -vE \u0027^\\s*$|^\\s*#|^\\s+\u0027 \"${file_path}\" | shuf -n 1)\ncd \"$_path\"\nrandom_filename\u003d$(find . -type f \\( -name \"*.jpg\" -o -name \"*.JPG\" -o -name \"*.png\" -o -name \"*.PNG\" \\) | shuf -n 1)\nrandom_filename\u003d\"${random_filename#./}\"\n#echo \"$_path/$random_filename\"\nscreen_w\u003d$(wm size | sed \u0027s/.*: \\([0-9]\\{4\\}\\)x.*/\\1/\u0027)\nscreen_h\u003d$(wm size | sed \u0027s/.*x\\([0-9]\\{4\\}\\).*/\\1/\u0027)\nscreen_hw\u003d$(echo \"${screen_w} * 1.8\" | bc -q)\nscreen_hw\u003d$(echo ${screen_hw%.*})\nmagick \"${random_filename}\" -resize \"x${screen_h}\" \"${wall_p}/wallpaper0.jpg\"\nwallpaper_width\u003d$(magick identify -format \"%w\" \"${wall_p}/wallpaper0.jpg\")\nif [ \"${wallpaper_width}\" -ge \"${screen_w}\" ] \u0026\u0026 [ \"${wallpaper_width}\" -le \"${screen_hw}\" ]; then\n  magick \"${wall_p}/wallpaper0.jpg\" -gravity center -crop \"${screen_w}x${screen_h}+0+0\" +repage \"${wall_p}/wallpaper.jpg\"\nelse\n  magick \"${wall_p}/wallpaper0.jpg\" -blur 0x5 \"${wall_p}/wallpaper_blur.jpg\"\n  magick \"${random_filename}\" -resize \"${screen_w}x\" \"${wall_p}/wallpaper1.jpg\"\n  magick convert \"${wall_p}/wallpaper_blur.jpg\" \"${wall_p}/wallpaper1.jpg\" -gravity center -composite \"${wall_p}/wallpaper2.jpg\"\n  magick convert \"${wall_p}/wallpaper2.jpg\" -gravity center -crop \"${screen_w}x${screen_h}+0+0\" +repage \"${wall_p}/wallpaper.jpg\"\nfi",
+    "command": "wall_p\u003d\"/sdcard/Android/wallpaper\"\n[ ! -d \"${wall_p}\" ] \u0026\u0026 mkdir -p \"${wall_p}\"\nfile_path\u003d\"${wall_p}/random_path.txt\"\n[ ! -f \"${file_path}\" ] \u0026\u0026 echo \"#填写壁纸路径，一行一个\" \u003e \"${file_path}\"\n\nline_count\u003d$(grep -c \"^/\" \"${file_path}\")\nif [ $line_count -gt 0 ]; then\n  random_num\u003d$((RANDOM % line_count + 1))\n  _path\u003d$(grep \"^/\" \"${file_path}\" | sed -n \"${random_num}p\")\nelse\n  exit 123\nfi\n# _path\u003d$(grep -vE \u0027^\\s*$|^\\s*#|^\\s+\u0027 \"${file_path}\" | shuf -n 1)\necho \"$_path\" \u003e\"${wall_p}/lock_path.txt\"\ncd \"$_path\"\nimage_count\u003d$(find . -maxdepth 3 -type f \\( -iname \\*.jpg -o -iname \\*.png \\) | wc -l)\nrand_num\u003d$((RANDOM % image_count + 1))\nrandom_filename\u003d$(find . -maxdepth 3 -type f \\( -iname \\*.jpg -o -iname \\*.png \\) | sed -n ${rand_num}p)\n# random_filename\u003d$(find . -type f \\( -name \"*.jpg\" -o -name \"*.JPG\" -o -name \"*.png\" -o -name \"*.PNG\" \\) | shuf -n 1)\nrandom_filename\u003d\"${random_filename#./}\"\n#echo \"$_path/$random_filename\"\nscreen_w\u003d$(wm size | sed \u0027s/.*: \\([0-9]\\{4\\}\\)x.*/\\1/\u0027)\nscreen_h\u003d$(wm size | sed \u0027s/.*x\\([0-9]\\{4\\}\\).*/\\1/\u0027)\nscreen_hw\u003d$(echo \"${screen_w} * 1.8\" | bc -q)\nscreen_hw\u003d$(echo ${screen_hw%.*})\nmagick \"${random_filename}\" -resize \"x${screen_h}\" \"${wall_p}/wallpaper0.jpg\"\nwallpaper_width\u003d$(magick identify -format \"%w\" \"${wall_p}/wallpaper0.jpg\")\nif [ \"${wallpaper_width}\" -ge \"${screen_w}\" ] \u0026\u0026 [ \"${wallpaper_width}\" -le \"${screen_hw}\" ]; then\n  magick \"${wall_p}/wallpaper0.jpg\" -gravity center -crop \"${screen_w}x${screen_h}+0+0\" +repage \"${wall_p}/wallpaper.jpg\"\nelse\n  magick \"${wall_p}/wallpaper0.jpg\" -blur 0x10 \"${wall_p}/wallpaper_blur.jpg\"\n  magick \"${random_filename}\" -resize \"${screen_w}x\" \"${wall_p}/wallpaper1.jpg\"\n  magick convert \"${wall_p}/wallpaper_blur.jpg\" \"${wall_p}/wallpaper1.jpg\" -gravity center -composite \"${wall_p}/wallpaper2.jpg\"\n  magick convert \"${wall_p}/wallpaper2.jpg\" -gravity center -crop \"${screen_w}x${screen_h}+0+0\" +repage \"${wall_p}/wallpaper.jpg\"\nfi",
     "customContextDataKey": {
       "keys": [{
         "first": "shellOut"
@@ -18,6 +93,7 @@
       }]
     },
     "actionOnError": "Break",
+    "isDisabled": true,
     "id": "A-43132e6a-e3ad-4161-8022-3750e01911ad"
   }, {
     "@type": "type.googleapis.com/ShowDanmu",
@@ -38,10 +114,72 @@
     "fileUrl": "/sdcard/Android/wallpaper/wallpaper.jpg",
     "customContextDataKey": {
     },
+    "isDisabled": true,
     "id": "A-c8e9375c-63c8-48ab-975b-82f26bec9669"
+  }, {
+    "@type": "type.googleapis.com/IfThenElse",
+    "If": [{
+      "@type": "type.googleapis.com/RequireTileState",
+      "state": "QSTileState_Active",
+      "tileSpec": "custom(tornaco.apps.shortx/.ui.service.tile.Tile4)",
+      "customContextDataKey": {
+      },
+      "id": "C-d90799ad-f914-48b9-a86b-2fec0c0a9e28"
+    }],
+    "IfActions": [{
+      "@type": "type.googleapis.com/ShellCommand",
+      "command": "setwallpaper H /sdcard/Android/wallpaper/wallpaper.jpg",
+      "customContextDataKey": {
+      },
+      "id": "A-d8516a2b-944a-4bbe-8f97-cd7ed487295d"
+    }],
+    "customContextDataKey": {
+    },
+    "id": "A-f8ec51dc-1dc5-43e8-9718-daa57fa568de"
+  }, {
+    "@type": "type.googleapis.com/IfThenElse",
+    "If": [{
+      "@type": "type.googleapis.com/RequireTileState",
+      "state": "QSTileState_Active",
+      "tileSpec": "custom(tornaco.apps.shortx/.ui.service.tile.Tile5)",
+      "customContextDataKey": {
+      },
+      "id": "C-32251b99-a081-47b9-95db-927d838df91c"
+    }],
+    "IfActions": [{
+      "@type": "type.googleapis.com/IfThenElse",
+      "If": [{
+        "@type": "type.googleapis.com/RequireTileState",
+        "state": "QSTileState_Active",
+        "tileSpec": "custom(tornaco.apps.shortx/.ui.service.tile.Tile7)",
+        "customContextDataKey": {
+        },
+        "id": "C-94536e4f-64e2-4c81-bf8a-ee65a761fff3"
+      }],
+      "IfActions": [{
+        "@type": "type.googleapis.com/ShellCommand",
+        "command": "setwallpaper L /sdcard/Android/wallpaper/wallpaper_blur.jpg",
+        "customContextDataKey": {
+        },
+        "id": "A-0913434b-9b3d-4d6b-877a-74724f348fec"
+      }],
+      "ElseActions": [{
+        "@type": "type.googleapis.com/ShellCommand",
+        "command": "setwallpaper L /sdcard/Android/wallpaper/wallpaper.jpg",
+        "customContextDataKey": {
+        },
+        "id": "A-0f0f9a7c-9d80-46be-bfaf-10543ca9c5e8"
+      }],
+      "customContextDataKey": {
+      },
+      "id": "A-7ea6f723-bc8b-47ff-8bbb-aa8ac66239a9"
+    }],
+    "customContextDataKey": {
+    },
+    "id": "A-cdeedb46-eea7-456f-bc5b-a9d427d5cbcd"
   }],
   "id": "DA48bf38f9-a27d-4ebf-a8e8-223935bdfcd1",
-  "lastUpdateTime": "1704123466923",
+  "lastUpdateTime": "1708756516034",
   "createTime": "1691760029063",
   "author": {
     "name": "Miseryset"
