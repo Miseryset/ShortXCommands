@@ -21,16 +21,6 @@
       "tags": []
     },
     {
-      "id": "DA2f12ef6e-356d-4ebf-8f48-15a0f2ec09eb",
-      "fileUrl": "ShortX-随机壁纸.txt",
-      "title": "随机壁纸",
-      "description": "设置随机壁纸",
-      "versionCode": 1,
-      "updateTimeMillis": 1693326009066,
-      "author": "Miseryset",
-      "tags": []
-    },
-    {
       "id": "DA85a8f0c9-4eb9-47cb-b070-61f830ca967c",
       "fileUrl": "ShortX-简易密码生成器0.2_改进_.txt",
       "title": "简易密码生成器0.2(改进)",
@@ -86,7 +76,7 @@
       "title": "随机壁纸（裁剪）",
       "description": "随机壁纸，裁剪至屏幕大小，magick来源于https://github.com/MolotovCherry/Android-ImageMagick7",
       "versionCode": 1,
-      "updateTimeMillis": 1708756516034,
+      "updateTimeMillis": 1712922572606,
       "author": "Miseryset",
       "tags": []
     }
